@@ -18,7 +18,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 Text(item.Bancos)
                     .font(.headline)
-                Text("Valor total: \(item.ValorTotal)")
+                Text("Valor total: R$ \(item.ValorTotal)")
                     .font(.subheadline)
                 Text("Status do projeto: \(item.StatusProjeto)")
                     .font(.subheadline)
