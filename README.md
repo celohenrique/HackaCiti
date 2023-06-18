@@ -30,4 +30,11 @@ Connecting to the Mock Server
 
 The application is already configured to fetch data from http://localhost:3001/mockData. If your mock server is running and set up correctly, the application will retrieve and display the mock data upon launch.
 
-Remember, any changes in the structure of the mock data may require modifications in the app's data model and the decoding process. Ensure that the mock data matches the structure of the OperacaoRemessa struct, or adjust the struct and decoder accordingly.
+Remember, any changes in the structure of the mock data may require modifications in the app's data model and the decoding process. Ensure that the mock data matche
+s the structure of the OperacaoRemessa struct, or adjust the struct and decoder accordingly.
+
+APP
+
+![Simulator Screenshot - iPad Pro (11-inch) (4th generation) - 2023-06-18 at 14 47 54](https://github.com/celohenrique/HackaCiti/assets/82070949/693ef7ac-f10b-4911-8c6f-c10791155ebe)
+
+
