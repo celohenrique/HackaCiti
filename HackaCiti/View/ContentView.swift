@@ -7,12 +7,55 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
     @State var data = [OperacaoRemessaSimples]()
+    
+    var processados: Float {
+        return data.filter { $0.StatusProjeto == "Processado" }.reduce(0) { $0 + (Float($1.ValorTotal) ?? 0) }
+    }
+    
+    var reprocessando: Float {
+        return data.filter { $0.StatusProjeto == "Reprocessado" }.reduce(0) { $0 + (Float($1.ValorTotal) ?? 0) }
+    }
+    
+    var processando: Float {
+        return data.filter { $0.StatusProjeto == "Processando" }.reduce(0) { $0 + (Float($1.ValorTotal) ?? 0) }
+    }
+    
+    var quantidadeProcessados: Int {
+        return data.filter { $0.StatusProjeto == "Processado" }.count
+    }
+    
+    var quantidadeReprocessando: Int {
+        return data.filter { $0.StatusProjeto == "Reprocessado" }.count
+    }
+    
+    var quantidadeProcessando: Int {
+        return data.filter { $0.StatusProjeto == "Processando" }.count
+    }
     
     var body: some View {
         VStack(alignment: .center){
             Text("Contingência").font(.largeTitle)
+            HStack {
+                VStack {
+                    Text("Processados").font(.headline)
+                    Text("Valor Total: R$ \(processados)")
+                    Text("Quantidade: \(quantidadeProcessados)")
+                }
+                VStack {
+                    Text("Reprocessando").font(.headline)
+                    Text("Valor Total: R$ \(reprocessando)")
+                    Text("Quantidade: \(quantidadeReprocessando)")
+                }
+                VStack {
+                    Text("Processando").font(.headline)
+                    Text("Valor Total: R$ \(processando)")
+                    Text("Quantidade: \(quantidadeProcessando)")
+                }
+            }
         }
         List(data, id: \.TipoOperacaoRemessa) { item in
             VStack(alignment: .leading) {
