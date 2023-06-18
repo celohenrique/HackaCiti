@@ -11,6 +11,7 @@ Mockoon: Download and install Mockoon from here. Mockoon is used to run mock ser
 Setting up the Mock Server
 
 Open Mockoon.
+
 Click on 'Create a new environment'.
 Set the port to 3001. This will make our mock server available at localhost:3001.
 Click on 'Add a route'.
