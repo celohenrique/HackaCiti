@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct ContentView: View {
     @State var data = [OperacaoRemessaSimples]()
     
@@ -37,37 +35,46 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center){
-            Text("Contingência").font(.largeTitle)
-            HStack {
-                VStack {
-                    Text("Processados").font(.headline)
-                    Text("Valor Total: R$ \(processados)")
-                    Text("Quantidade: \(quantidadeProcessados)")
-                }
-                VStack {
-                    Text("Reprocessando").font(.headline)
-                    Text("Valor Total: R$ \(reprocessando)")
-                    Text("Quantidade: \(quantidadeReprocessando)")
-                }
-                VStack {
-                    Text("Processando").font(.headline)
-                    Text("Valor Total: R$ \(processando)")
-                    Text("Quantidade: \(quantidadeProcessando)")
+        List {
+            Section(header: Text("Contingência")) {
+                //                Text("Contingência").font(.largeTitle)
+                
+                HStack {
+                    VStack {
+                        Text("Processados").font(.headline)
+                        Text("Valor Total: R$ \(processados)")
+                        Text("Quantidade: \(quantidadeProcessados)")
+                    }
+                    Spacer()
+                    VStack {
+                        Text("Reprocessando").font(.headline)
+                        Text("Valor Total: R$ \(reprocessando)")
+                        Text("Quantidade: \(quantidadeReprocessando)")
+                    }
+                    Spacer()
+                    VStack {
+                        Text("Processando").font(.headline)
+                        Text("Valor Total: R$ \(processando)")
+                        Text("Quantidade: \(quantidadeProcessando)")
+                    }
                 }
             }
-        }
-        List(data, id: \.TipoOperacaoRemessa) { item in
-            VStack(alignment: .leading) {
-                Text(item.Bancos)
-                    .font(.headline)
-                Text("Valor total: R$ \(item.ValorTotal)")
-                    .font(.subheadline)
-                Text("Status do projeto: \(item.StatusProjeto)")
-                    .font(.subheadline)
-                Text("Data da geração: \(item.DataGeracao)")
-                    .font(.subheadline)
-            }
+                
+                Section(header: Text("Detalhes das operações")) {
+                    ForEach(data, id: \.TipoOperacaoRemessa) { item in
+                        VStack(alignment: .leading) {
+                            Text(item.Bancos)
+                                .font(.headline)
+                            Text("Valor total: R$ \(item.ValorTotal)")
+                                .font(.subheadline)
+                            Text("Status do projeto: \(item.StatusProjeto)")
+                                .font(.subheadline)
+                            Text("Data da geração: \(item.DataGeracao)")
+                                .font(.subheadline)
+                        }
+                    }
+                }
+            
         }
         .onAppear(perform: loadData)
     }
